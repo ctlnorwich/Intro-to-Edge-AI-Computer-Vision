@@ -1,0 +1,35 @@
+[project]
+name = "intro-to-edge-ai-computer-vision"
+version = "0.1.0"
+description = "A whirlwind tour of computer vision on embedded Linux, from classical techniques to a cutting-edge edge AI stack on a Raspberry Pi 5"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    # OpenCV 5 moved Viola-Jones (CascadeClassifier) and HOG into the contrib modules, so we stay on 4.x
+    "opencv-python>=4.13,<5",
+    "numpy>=2",
+    "ultralytics>=8.4",
+    # Listed directly so the CPU-only source below applies to them (see [tool.uv.sources])
+    "torch",
+    "torchvision",
+    # Everything below is normally auto-installed by Ultralytics the first time you need it.
+    # We list it here so it is locked in uv.lock and nothing downloads mid-workshop.
+    "ncnn",                 # runs our exported models fast on the Pi's Arm CPU
+    "pnnx==20260526",       # converts PyTorch models to NCNN (version pinned by Ultralytics)
+    "lap>=0.5.12",          # the maths ByteTrack uses to match boxes between frames
+    "clip @ git+https://github.com/ultralytics/CLIP.git",  # text tokenizer for YOLOE's text prompts
+]
+
+# On Linux, PyTorch from PyPI comes with several GB of NVIDIA CUDA libraries.
+# A Raspberry Pi has no NVIDIA GPU, so we get the much smaller CPU-only build instead.
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.ruff]
+line-length = 120

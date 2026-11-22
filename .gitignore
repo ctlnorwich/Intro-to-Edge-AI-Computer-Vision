@@ -1,0 +1,14 @@
+# Python
+.venv/
+__pycache__/
+
+# Downloaded and exported models (these are big, and everyone makes their own)
+*.pt
+*.ts
+*_ncnn_model/
+
+# Test images downloaded during the workshop
+test_image.png
+
+# macOS
+.DS_Store
