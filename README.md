@@ -1,4 +1,4 @@
-# Intro to Edge AI Computer Vision
+# Intro to Edge AI: Computer Vision
 A whirlwind tour of computer vision on embedded Linux. We start with the algorithms that let computers see for the first time, and finish by running a cutting-edge edge AI stack on a Raspberry Pi 5.
 
       ____     .--.               _____
@@ -23,8 +23,7 @@ This workshop follows on from [Intro to the Unix Terminal](https://github.com/ct
 | A computer | With [Raspberry Pi Imager](https://www.raspberrypi.com/software/) installed and a web browser |
 
 ## Contents
-
-- [Intro to Edge AI Computer Vision](#intro-to-edge-ai-computer-vision)
+- [Intro to Edge AI: Computer Vision](#intro-to-edge-ai-computer-vision)
   - [Contents](#contents)
   - [What is Edge AI?](#what-is-edge-ai)
   - [Part 1: Flashing the SD Card](#part-1-flashing-the-sd-card)
